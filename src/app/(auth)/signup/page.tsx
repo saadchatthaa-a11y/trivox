@@ -46,7 +46,7 @@ export default function SignupPage() {
     <div className="min-h-screen flex items-center justify-center bg-paper px-4">
       <form onSubmit={handleSubmit} className="bg-white border border-line rounded-xl p-8 w-full max-w-md">
         <h1 className="text-2xl font-serif font-semibold text-ink mb-1">Create your agency account</h1>
-        <p className="text-sm text-ink/60 mb-6">14-day free trial, no card required to start.</p>
+        <p className="text-sm text-ink/60 mb-6">Get started with SAC CRM today.</p>
 
         {error && <div className="text-sm text-rust bg-rust/10 border border-rust/30 rounded-md p-3 mb-4">{error}</div>}
 
@@ -68,7 +68,7 @@ export default function SignupPage() {
 
         <button disabled={loading} type="submit"
           className="w-full bg-brass hover:bg-brassdark text-white font-semibold rounded-md py-2.5 text-sm transition">
-          {loading ? "Creating your workspace…" : "Start free trial"}
+          {loading ? "Creating your workspace…" : "Create account"}
         </button>
 
         <p className="text-xs text-ink/50 mt-4 text-center">

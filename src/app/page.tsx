@@ -5,7 +5,7 @@ export default function LandingPage() {
   return (
     <div>
       <header className="max-w-6xl mx-auto flex items-center justify-between px-6 py-6">
-        <span className="font-serif text-xl font-semibold">Nestly</span>
+        <span className="font-serif text-xl font-semibold">SAC CRM</span>
         <nav className="flex items-center gap-4 text-sm font-medium">
           <a href="#pricing" className="text-ink/70 hover:text-ink">Pricing</a>
           <Link href="/login" className="text-ink/70 hover:text-ink">Log in</Link>
@@ -20,7 +20,7 @@ export default function LandingPage() {
           Turn WhatsApp &amp; social leads into booked units — automatically.
         </h1>
         <p className="text-ink/60 text-lg mb-8 max-w-2xl mx-auto">
-          Nestly captures leads from Facebook, Instagram and WhatsApp, scores them with AI,
+          SAC CRM captures leads from Facebook, Instagram and WhatsApp, scores them with AI,
           drafts your follow-ups, and runs drip campaigns — all in one pipeline your team
           actually uses.
         </p>
@@ -35,7 +35,7 @@ export default function LandingPage() {
       </section>
 
       <footer className="border-t border-line py-8 text-center text-xs text-ink/50">
-        © {new Date().getFullYear()} Nestly. All rights reserved.
+        © {new Date().getFullYear()} SAC CRM. All rights reserved.
       </footer>
     </div>
   );

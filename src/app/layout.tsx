@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nestly — Real Estate Lead & Marketing CRM",
+  title: "SAC CRM — Real Estate Lead & Marketing CRM",
   description: "AI-powered lead pipeline, campaigns, and WhatsApp/social intake for real estate marketing teams.",
 };
 
