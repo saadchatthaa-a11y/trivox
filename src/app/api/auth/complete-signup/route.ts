@@ -22,6 +22,8 @@ if (authUserError || !authUser.user) {
       error: "Server cannot find this user in Supabase",
       details: authUserError?.message ?? "User not found",
       userId,
+      hasSupabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+      hasServiceRoleKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
     },
     { status: 500 }
   );
