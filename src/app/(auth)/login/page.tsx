@@ -16,7 +16,14 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     setError("");
-    const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+const { data, error: signInError } =
+  await supabase.auth.signInWithPassword({ email, password });
+
+console.log("LOGIN RESULT:", {
+  user: data.user?.id,
+  session: !!data.session,
+  error: signInError?.message,
+});
     if (signInError) {
       setError(signInError.message);
       setLoading(false);
