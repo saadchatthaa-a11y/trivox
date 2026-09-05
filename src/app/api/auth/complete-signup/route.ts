@@ -13,6 +13,19 @@ export async function POST(req: Request) {
   }
 
   const admin = createAdminClient();
+  const { data: authUser, error: authUserError } =
+  await admin.auth.admin.getUserById(userId);
+
+if (authUserError || !authUser.user) {
+  return NextResponse.json(
+    {
+      error: "Server cannot find this user in Supabase",
+      details: authUserError?.message ?? "User not found",
+      userId,
+    },
+    { status: 500 }
+  );
+}
 
   const slug = orgName
     .toLowerCase()
