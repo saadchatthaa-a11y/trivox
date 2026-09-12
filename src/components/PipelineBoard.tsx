@@ -20,12 +20,38 @@ export default function PipelineBoard() {
   const [loading, setLoading] = useState(true);
 
   async function loadAll() {
-    const { data: stageRows } = await supabase.from("pipeline_stages").select("*").order("sort_order");
-    const { data: leadRows } = await supabase.from("leads").select("*").order("created_at", { ascending: false });
-    setStages(stageRows ?? []);
-    setLeads(leadRows ?? []);
-    setLoading(false);
-  }
+  console.log("DASHBOARD: loading data...");
+
+  const {
+    data: stageRows,
+    error: stageError,
+  } = await supabase
+    .from("pipeline_stages")
+    .select("*")
+    .order("sort_order");
+
+  console.log("PIPELINE STAGES:", {
+    rows: stageRows?.length,
+    error: stageError?.message,
+  });
+
+  const {
+    data: leadRows,
+    error: leadError,
+  } = await supabase
+    .from("leads")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  console.log("LEADS:", {
+    rows: leadRows?.length,
+    error: leadError?.message,
+  });
+
+  setStages(stageRows ?? []);
+  setLeads(leadRows ?? []);
+  setLoading(false);
+}
   useEffect(() => { loadAll(); }, []);
 
   async function openLead(lead: Lead) {
