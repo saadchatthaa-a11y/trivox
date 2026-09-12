@@ -4,14 +4,28 @@ import Sidebar from "@/components/Sidebar";
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user }, error: getUserError } = await supabase.auth.getUser();
+
+  console.log("DASHBOARD LAYOUT DEBUG — user check:", {
+    userFound: !!user,
+    userId: user?.id,
+    getUserError: getUserError?.message,
+  });
+
   if (!user) redirect("/login");
 
-  const { data: membership } = await supabase
+  const { data: membership, error: membershipError } = await supabase
     .from("org_members")
     .select("role, organizations(name, plan, subscription_status)")
     .eq("user_id", user.id)
     .single();
+
+  console.log("DASHBOARD LAYOUT DEBUG — membership check:", {
+    membershipFound: !!membership,
+    membership,
+    membershipError: membershipError?.message,
+    membershipErrorCode: membershipError?.code,
+  });
 
   if (!membership) redirect("/login");
   const org = (membership as any).organizations;
