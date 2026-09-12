@@ -28,7 +28,15 @@ export async function middleware(request: NextRequest) {
 
   const {
     data: { user },
+    error: getUserError,
   } = await supabase.auth.getUser();
+
+  console.log("MIDDLEWARE DEBUG:", {
+    path: request.nextUrl.pathname,
+    incomingCookieNames: request.cookies.getAll().map((c) => c.name),
+    userFound: !!user,
+    getUserError: getUserError?.message,
+  });
 
   if (!user && request.nextUrl.pathname.startsWith("/dashboard")) {
     const url = request.nextUrl.clone();
